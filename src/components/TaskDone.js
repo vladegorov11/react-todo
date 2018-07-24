@@ -8,16 +8,17 @@ class TaskDone extends Component {
 	}
 
 	render(){
+
 		const task = this.props.task
 			return (
-					<li className="list-group-item bg-success text-white">
-		    		<div >
-			    		{task.text}
-			    	</div>
-			     	{task.created_at}
-			     	<button className="btn btn-primary float-right" onClick={this.removeTask.bind(this)}>remove</button> 
-		    	</li>
-				)
+				<li className="list-group-item bg-success text-white">
+	    		<div >
+		    		{task.text}
+		    	</div>
+		     	{task.created_at}
+		     	<button className="btn btn-primary float-right" onClick={this.removeTask.bind(this)}>remove</button> 
+	    	</li>
+			)
 
 	}
 }

@@ -70,7 +70,7 @@ class TaskNotDone extends Component {
 		    	<div style={{display: this.state.isOpen ? 'block' : 'none'}}>
 			    	TEXT: {task.text}
 			    </div>
-			    
+
 			     <span className="float-right">{task.created_at}</span>
 		    </li>
 			)

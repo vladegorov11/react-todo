@@ -15,17 +15,11 @@ export default function tasks(state= initialState, action ) {
 		state = action.payload;
 		return state 
 	}
-	if (action.type === 'SEARCH_TASK') {
-		let filter = state.filter(task => task.text.includes(action.payload))
-		return filter
-	}
 	if (action.type === 'DONE_TASK') {
-		state.forEach(function(task, i, arr) {
-		  if (task.id === action.payload.id) {
-		  	task.done = true
-		  }
-		});
-	    return state 
+		action.payload.done = true 
+		state.filter(task => task.id !== action.payload.id); 
+
+		return [...state ]
 	}
 	if (action.type === 'EDIT_TASK') {
 		state.forEach(function(task, i, arr) {

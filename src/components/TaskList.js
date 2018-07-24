@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TaskNotDone from './TaskNotDone.js';
 import TaskDone from  './TaskDone.js';
-export default function TaskList(props) {
+import {connect} from 'react-redux';
 
-  	const taskList = props.tasks.filter(task => task.done !== true).map((task, index) => 
+class TaskList extends Component {
+	render() {
+  	const taskList = this.props.tasks.filter(task => task.done !== true).map((task, index) => 
 			 			  					<TaskNotDone key={index} task={task}/>
 			 								);
-  	const taskDone = props.tasks.filter(task => task.done !== false ).map((task, index) => 
+  	const taskDone = this.props.tasks.filter(task => task.done !== false ).map((task, index) => 
 			 			  					<TaskDone key={index} task={task}/>
 			 								);
-  	console.log('list',props.tasks);
 	  return (
 	    <div className='row'>
 		    <div className='col-md-6'>
@@ -27,4 +28,13 @@ export default function TaskList(props) {
 	    </div>
 
 	  );
+	}
 }
+export default connect(
+	state => ({
+		testStore: state
+	}),
+	dispatch => ({
+		
+	})
+	)(TaskList);

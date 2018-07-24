@@ -13,9 +13,9 @@ class App extends Component {
     	isLoading: true
     };
 	}
-
+	
 	componentWillMount() {
-		axios.get(`http://localhost:3000/tasks.json`)
+		axios.get(`http://localhost:4000/tasks.json`)
 	      .then(res => {
 					this.props.FetchTasks(res.data);
 	      })
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   render() {
-		const Tasks = this.props.testStore.tasks
+		const Tasks = this.props.testStore
     return (
       <div className="container mt-4">
     		<div className="row"> 
@@ -39,9 +39,10 @@ class App extends Component {
   }
 }
 
+
 export default connect(
 	state => ({
-		testStore: state //.tasks.filter(task => task.text.includes(state.filterTasks))
+		testStore: state.tasks.filter(task => task.text.includes(state.filterTasks))
 	}),
 	dispatch => ({
 		FetchTasks: (tasks) => {
